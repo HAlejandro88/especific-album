@@ -1,0 +1,163 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../iron-icons/hardware-icons.html">
+<link rel="import" href="../iron-icons/av-icons.html">
+<link rel="import" href="../polymer/elements/lib/dom-repeat.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+
+
+<dom-module id="list-music">
+  <template>
+    <style>
+      :host {
+        display: block;
+        background-color: rgba(14, 1, 68, 0.2);
+      }
+      #albumImage img{
+        float: left;
+        border-radius: 10px;
+        box-shadow: 8px, 8px,black;
+        padding: 0;
+        width: 45%;
+        animation: cambio 20s infinite alternate linear
+      }
+      #albumImage img hover .move-right{
+        cursor: pointer;
+        transform: translate(350px,0);
+        -webkit-transform: translate(350px,0); 
+        -o-transform: translate(350px,0); 
+        -moz-transform: translate(350px,0); 
+      }
+      .canciones{
+        display: inline-block;
+      }
+      .canciones li{
+        list-style: none;
+        cursor: pointer;
+      }
+    </style>
+    <h1>[[albumName]]</h1>
+    <div id="albumImage">
+      <img src="{{albumImage}}">
+      <p>[[albumDescription]]</p>
+    
+      <ul class="canciones">
+        <li><paper-button on-tap="play"><iron-icon icon="{{cancion}}"></iron-icon>Cancion1</paper-button><iron-icon icon="icons:more-horiz" on-tap="agregar"></iron-icon></li>
+        <li><paper-button on-tap="play1"><iron-icon icon="{{cancion1}}"></iron-icon>Cancion2</paper-button><iron-icon icon="icons:more-horiz" on-tap="agregar"></iron-icon></li>
+        <li><paper-button on-tap="play2"><iron-icon icon="{{cancion2}}"></iron-icon>Cancion3</paper-button><iron-icon icon="icons:more-horiz" on-tap="agregar"></iron-icon></li>
+        <li><paper-button on-tap="play3"><iron-icon icon="{{cancion3}}"></iron-icon>Cancion4</paper-button><iron-icon icon="icons:more-horiz" on-tap="agregar"></iron-icon></li>
+        <li><paper-button on-tap="play4"><iron-icon icon="{{cancion4}}"></iron-icon>Cancion5</paper-button><iron-icon icon="icons:more-horiz" on-tap="agregar"></iron-icon></li>
+      </ul>
+    </div>  
+  </template>
+
+  <script>
+    /**
+     * `list-music`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class ListMusic extends Polymer.Element {
+      static get is() { return 'list-music'; }
+      static get properties() {
+        return {
+          albumImage: {
+            type: String,
+            value: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4OpPPGmGeHIAmnBPIlUF6JRSATSOJMbifo7slPNHSwJtf5LPPAQ'
+          },
+          albunArtist:{
+            type: String,
+            value: ''
+          },
+          AlbumName:{
+            type: String,
+            value: ''
+          },
+          albumDescription:{
+            type:String,
+            value: ''
+          },
+          cancion:{
+            type: String,
+            value: 'av:play-circle-filled'
+          },
+          cancion1:{
+            type: String,
+            value: 'av:play-circle-filled'
+          },
+          cancion2:{
+            type:String,
+            value:'av:play-circle-filled'
+          },
+          cancion3:{
+            type:String,
+            value:'av:play-circle-filled'
+          },
+          cancion4:{
+            type:String,
+            value:'av:play-circle-filled'
+          },
+          cambio:{
+            type: Boolean,
+            value:true
+          }
+        };
+      }
+      play(){
+        if(this.cambio == true){
+          this.set("cambio",false);
+          this.set("cancion","av:pause-circle-filled");
+        }
+        else{
+          this.set("cambio",true);
+          this.set("cancion","av:play-circle-filled");
+        }
+      }
+      play1(){
+        if(this.cambio == true){
+          this.set("cambio",false);
+          this.set("cancion1","av:pause-circle-filled");
+        }
+        else{
+          this.set("cambio",true);
+          this.set("cancion1","av:play-circle-filled");
+        }
+      }
+      play2(){
+        if(this.cambio == true){
+          this.set("cambio",false);
+          this.set("cancion2","av:pause-circle-filled");
+        }
+        else{
+          this.set("cambio",true);
+          this.set("cancion2","av:play-circle-filled");
+        }
+      }
+      play3(){
+        if(this.cambio == true){
+          this.set("cambio",false);
+          this.set("cancion3","av:pause-circle-filled");
+        }
+        else{
+          this.set("cambio",true);
+          this.set("cancion3","av:play-circle-filled");
+        }
+      }
+      play4(){
+        if(this.cambio == true){
+          this.set("cambio",false);
+          this.set("cancion4","av:pause-circle-filled");
+        }
+        else{
+          this.set("cambio",true);
+          this.set("cancion4","av:play-circle-filled");
+        }
+      }
+    }
+
+    window.customElements.define(ListMusic.is, ListMusic);
+  </script>
+</dom-module>
