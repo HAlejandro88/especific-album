@@ -35,6 +35,40 @@
         list-style: none;
         cursor: pointer;
       }
+      .menu{
+        width: 100%;
+        height: 50px;
+        display: flex;
+      }
+      .menu ul{
+        display: none;
+        margin: auto;
+        flex-direction: column;
+        position: absolute;
+        background-color: #58b813;
+        margin-top: 15px;
+        box-shadow: 1px 1px 10px 0px black;
+        margin-left: 400px;
+      }
+      .menu li{
+        list-style: none;
+        padding: 15px, 20px;  
+      }
+      .menu li :hover{
+        background: #0f2401;
+        color: white;
+        cursor: pointer;
+      }
+      .menu ul :before{
+        content:'';
+        width: 0;
+        height: 0;
+        border-right: 10px solid transparent;
+        border-left: 10px solid transparent;
+        border-bottom: 8px solid #58b813;
+        position: absolute;
+        margin-top: -8px;
+      }
     </style>
     <h1>[[albumName]]</h1>
     <div id="albumImage">
@@ -42,13 +76,19 @@
       <p>[[albumDescription]]</p>
     
       <ul class="canciones">
-        <li><paper-button on-tap="play"><iron-icon icon="{{cancion}}"></iron-icon>Cancion1</paper-button><iron-icon icon="icons:more-horiz" on-tap="agregar"></iron-icon></li>
+        <li><paper-button on-tap="play"><iron-icon icon="{{cancion}}"></iron-icon>Cancion1</paper-button><iron-icon icon="icons:more-horiz" on-click="agregar"></iron-icon></li>
         <li><paper-button on-tap="play1"><iron-icon icon="{{cancion1}}"></iron-icon>Cancion2</paper-button><iron-icon icon="icons:more-horiz" on-tap="agregar"></iron-icon></li>
         <li><paper-button on-tap="play2"><iron-icon icon="{{cancion2}}"></iron-icon>Cancion3</paper-button><iron-icon icon="icons:more-horiz" on-tap="agregar"></iron-icon></li>
         <li><paper-button on-tap="play3"><iron-icon icon="{{cancion3}}"></iron-icon>Cancion4</paper-button><iron-icon icon="icons:more-horiz" on-tap="agregar"></iron-icon></li>
         <li><paper-button on-tap="play4"><iron-icon icon="{{cancion4}}"></iron-icon>Cancion5</paper-button><iron-icon icon="icons:more-horiz" on-tap="agregar"></iron-icon></li>
       </ul>
-    </div>  
+    </div> 
+    <div class="menu" id="add">
+      <ul>
+        <li>Agregar Cancion</li>
+        <li>Detener Cancion</li>
+      </ul>
+    </div> 
   </template>
 
   <script>
@@ -155,6 +195,10 @@
           this.set("cambio",true);
           this.set("cancion4","av:play-circle-filled");
         }
+      }
+      agregar(){
+        const agregar = this.shadowRoot.querySelector('#add');
+        agregar.style.display = 'block';
       }
     }
 
