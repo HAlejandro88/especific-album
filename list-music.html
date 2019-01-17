@@ -19,7 +19,6 @@
         box-shadow: 8px, 8px,black;
         padding: 0;
         width: 45%;
-        animation: cambio 20s infinite alternate linear
       }
       #albumImage img hover .move-right{
         cursor: pointer;
@@ -35,60 +34,107 @@
         list-style: none;
         cursor: pointer;
       }
-      .menu{
-        width: 100%;
-        height: 50px;
-        display: flex;
+      h1{
+        text-align: center;
+        color: white;
       }
-      .menu ul{
-        display: none;
+      .dropdown-content ul{
         margin: auto;
         flex-direction: column;
         position: absolute;
-        background-color: #58b813;
-        margin-top: 15px;
+        background-color: #9d9e9c;
         box-shadow: 1px 1px 10px 0px black;
-        margin-left: 400px;
+        text-align: center;
       }
-      .menu li{
+      .dropdown-content li{
         list-style: none;
-        padding: 15px, 20px;  
+        padding: 0, 40px; 
+        text-align: center; 
       }
-      .menu li :hover{
+      .dropdown-content li:hover{
         background: #0f2401;
         color: white;
         cursor: pointer;
+        border-radius: 8px;
       }
-      .menu ul :before{
+      .dropdown-content  ul :before{
         content:'';
         width: 0;
         height: 0;
         border-right: 10px solid transparent;
         border-left: 10px solid transparent;
-        border-bottom: 8px solid #58b813;
+        border-bottom: 8px solid #9d9e9c;
         position: absolute;
         margin-top: -8px;
       }
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
     </style>
-    <h1>[[albumName]]</h1>
+    <h1>[[AlbumName]]</h1>
     <div id="albumImage">
       <img src="{{albumImage}}">
-      <p>[[albumDescription]]</p>
-    
       <ul class="canciones">
-        <li><paper-button on-tap="play"><iron-icon icon="{{cancion}}"></iron-icon>Cancion1</paper-button><iron-icon icon="icons:more-horiz" on-click="agregar"></iron-icon></li>
-        <li><paper-button on-tap="play1"><iron-icon icon="{{cancion1}}"></iron-icon>Cancion2</paper-button><iron-icon icon="icons:more-horiz" on-tap="agregar"></iron-icon></li>
-        <li><paper-button on-tap="play2"><iron-icon icon="{{cancion2}}"></iron-icon>Cancion3</paper-button><iron-icon icon="icons:more-horiz" on-tap="agregar"></iron-icon></li>
-        <li><paper-button on-tap="play3"><iron-icon icon="{{cancion3}}"></iron-icon>Cancion4</paper-button><iron-icon icon="icons:more-horiz" on-tap="agregar"></iron-icon></li>
-        <li><paper-button on-tap="play4"><iron-icon icon="{{cancion4}}"></iron-icon>Cancion5</paper-button><iron-icon icon="icons:more-horiz" on-tap="agregar"></iron-icon></li>
+        <li><paper-button on-tap="play"><iron-icon icon="{{cancion}}"></iron-icon>Cancion1</paper-button><div class="dropdown">
+          <iron-icon icon="icons:more-horiz"></iron-icon>
+          <div class="dropdown-content">
+            <ul>
+              <li>Agregar</li>
+              <li>Detener</li>
+            </ul>
+          </div>
+        </div></li>
+        <li><paper-button on-tap="play1"><iron-icon icon="{{cancion1}}"></iron-icon>Cancion2</paper-button><div class="dropdown">
+          <iron-icon icon="icons:more-horiz"></iron-icon>
+          <div class="dropdown-content">
+            <ul>
+              <li>Agregar</li>
+              <li>Detener</li>
+            </ul>
+          </div>
+        </div></li>
+        <li><paper-button on-tap="play2"><iron-icon icon="{{cancion2}}"></iron-icon>Cancion3</paper-button><div class="dropdown">
+          <iron-icon icon="icons:more-horiz"></iron-icon>
+          <div class="dropdown-content">
+            <ul>
+              <li>Agregar</li>
+              <li>Detener</li>
+            </ul>
+          </div>
+        </div></li>
+        <li><paper-button on-tap="play3"><iron-icon icon="{{cancion3}}"></iron-icon>Cancion4</paper-button><div class="dropdown">
+          <iron-icon icon="icons:more-horiz"></iron-icon>
+          <div class="dropdown-content">
+            <ul>
+              <li>Agregar</li>
+              <li>Detener</li>
+            </ul>
+          </div>
+        </div></li>
+        <li><paper-button on-tap="play4"><iron-icon icon="{{cancion4}}"></iron-icon>Cancion5</paper-button><div class="dropdown">
+          <iron-icon icon="icons:more-horiz"></iron-icon>
+          <div class="dropdown-content">
+            <ul>
+              <li>Agregar</li>
+              <li>Detener</li>
+            </ul>
+          </div>
+        </div></li>
       </ul>
     </div> 
-    <div class="menu" id="add">
-      <ul>
-        <li>Agregar Cancion</li>
-        <li>Detener Cancion</li>
-      </ul>
-    </div> 
+    
   </template>
 
   <script>
@@ -110,15 +156,11 @@
           },
           albunArtist:{
             type: String,
-            value: ''
+            value: 'bABO'
           },
           AlbumName:{
             type: String,
-            value: ''
-          },
-          albumDescription:{
-            type:String,
-            value: ''
+            value: 'CARTEL DE SANTA'
           },
           cancion:{
             type: String,
@@ -197,7 +239,7 @@
         }
       }
       agregar(){
-        const agregar = this.shadowRoot.querySelector('#add');
+        const agregar = this.shadowRoot.querySelector("#a");
         agregar.style.display = 'block';
       }
     }
